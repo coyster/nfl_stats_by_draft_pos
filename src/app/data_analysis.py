@@ -39,6 +39,9 @@ def main():
     df = get_data()
     df["total_yrds"] = df["rush_yds"] + df["rec_yds"]
     df["total_td"] = df["rush_td"] + df["rec_td"]
+
+    print(pd.unique(df["pos"]))
+
     df_wr = df.loc[df["pos"] == "WR"]
     print(df_wr.head())
     df_wr_ag = df_wr[
@@ -84,15 +87,15 @@ def main():
     # # testing.hist()
     # # plt.show()
 
-    testing = testing.agg([np.mean, np.std, np.max, np.min])
-    testing.to_csv(
-        os.path.join(
-            os.path.dirname(os.path.dirname(__file__)),
-            "data",
-            "clean",
-            "testing_wr.csv",
-        )
-    )
+    # testing = testing.agg([np.mean, np.std, np.max, np.min])
+    # testing.to_csv(
+    #     os.path.join(
+    #         os.path.dirname(os.path.dirname(__file__)),
+    #         "data",
+    #         "clean",
+    #         "testing_wr.csv",
+    #     )
+    # )
 
 
 main()
